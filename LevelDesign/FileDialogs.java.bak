@@ -1,0 +1,21 @@
+import java.awt.*;
+
+class FileDialogs extends Frame
+{
+	FileDialog fd;
+	//String fileName;
+
+	private FileDialogs()
+	{
+		fd = new FileDialog(this, "Open...", FileDialog.LOAD);
+		setSize(300, 200);
+		setVisible(true);
+		fd.setVisible(true);
+
+		String name = fd.getFile();
+		if (name == null){
+			return;
+		}
+		//fileName = fd.getDirectory() + name;
+	}
+}
