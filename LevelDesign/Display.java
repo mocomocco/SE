@@ -10,7 +10,6 @@ public class Display
 	JPanel p1, p2; // top panel, bottom panel
 	JPanel pa, pb; // left panel, right panel in top panel
 	JPanel prop, layerp, disp, itp; //property panel, layer panel, display panel, item panel
-	//JPanel map;
 
 	public Display(String msg) 
 	{
