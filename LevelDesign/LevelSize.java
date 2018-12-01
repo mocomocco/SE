@@ -1,5 +1,5 @@
 public class LevelSize{
-    int gridsize;
-    int width;
-    int height;
+    static int gridsize;
+    static int width;
+    static int height;
 }

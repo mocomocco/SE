@@ -1,15 +1,15 @@
 public class Level{
 
-    String Name;
-    String BackgroundName;
+    static String Name;
+    static String BackgroundName;
     LevelSize levelsize;
     Object[] objects;
 
     Level(){
-        levelsize.gridsize=0;
-        levelsize.width=0;
-        levelsize.height=0;
+        levelsize.gridsize=10;
+        levelsize.width=275;
+        levelsize.height=275;
         Name="asdf";
-        BackgroundName="NoImage";
+        BackgroundName="background.png";
     }
 }

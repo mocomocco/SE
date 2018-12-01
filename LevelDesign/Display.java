@@ -1,5 +1,6 @@
 import java.awt.*;
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 
 
 public class Display 
@@ -9,6 +10,7 @@ public class Display
 	JPanel p1, p2; // top panel, bottom panel
 	JPanel pa, pb; // left panel, right panel in top panel
 	JPanel prop, layerp, disp, itp; //property panel, layer panel, display panel, item panel
+	//JPanel map;
 
 	public Display(String msg) 
 	{
@@ -51,5 +53,19 @@ public class Display
 
 		jf.add(p1, BorderLayout.CENTER);
 		jf.add(itp, BorderLayout.SOUTH);
+
+		disp.setLayout(null);
+		MakeLevel makelevel;
+		makelevel = new MakeLevel();
+		disp.add(makelevel.map);
+		disp.setBorder(BorderFactory.createLineBorder(Color.lightGray));;
+
+		itp.setLayout(null);
+		Item item;
+		item = new Item();
+		itp.add(item.items);
+		itp.setBorder(BorderFactory.createLineBorder(Color.lightGray));;
+
 	}
+
 }
