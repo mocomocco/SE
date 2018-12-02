@@ -1,17 +1,13 @@
-public class Object
-{
-  private class Size{
-    int anchorx;
-    int anchory;
-  }
-  String Image;
-  String Name;
-  Size size;
+public class Object {
 
-  Object(){
-    size.anchorx = 25;
-    size.anchory = 25;
-    Image="grast.gif";
-    Name="asdf";
-  }
+    static String Name;
+    static String Image;
+    ObjectSize objectsize;
+
+    Object(){
+        objectsize.anchorx = 25;
+        objectsize.anchory = 25;
+        Image="grasst.gif";
+        Name="asdf";
+    }
 }

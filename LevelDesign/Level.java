@@ -1,7 +1,7 @@
 public class Level{
 
-    String Name;
-    String BackgroundName;
+    static String Name;
+    static String BackgroundName;
     LevelSize levelsize;
     Object[][] objects;
 
