@@ -9,9 +9,9 @@ public class Object
   Size size;
 
   Object(){
-    size.anchorx = 0;
-    size.anchory = 0;
-    Image="NoImage";
+    size.anchorx = 25;
+    size.anchory = 25;
+    Image="grast.gif";
     Name="asdf";
   }
 }
