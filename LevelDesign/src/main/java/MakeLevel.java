@@ -28,7 +28,7 @@ public class MakeLevel {
         imageIcons=new ImageIcon[objectlength];
 
         for (int objectid=1;objectid<objectlength+1;objectid++) {
-            System.out.println(objectid-1+" "+level.objects.get(objectid-1).Image);
+            //System.out.println(objectid-1+" "+level.objects.get(objectid-1).Image);
             imageIcons[objectid-1] = new ImageIcon(level.objects.get(objectid-1).Image); // load the image to a imageIcon
             Image image = imageIcons[objectid-1].getImage(); // transform it
             Image newimg = image.getScaledInstance(level.objects.get(objectid-1).objectsize.anchorx, level.objects.get(objectid-1).objectsize.anchory, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
