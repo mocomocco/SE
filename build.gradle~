@@ -1,0 +1,5 @@
+task task01 {
+  doLast {
+    println 'Hello Gradle'
+  }
+}

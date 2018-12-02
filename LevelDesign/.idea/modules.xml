@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/LevelDesign.iml" filepath="$PROJECT_DIR$/LevelDesign.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/LevelDesign.project.iml" filepath="$PROJECT_DIR$/.idea/modules/LevelDesign.project.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/LevelDesign.project_main.iml" filepath="$PROJECT_DIR$/.idea/modules/LevelDesign.project_main.iml" group="LevelDesign.project" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/LevelDesign.project_test.iml" filepath="$PROJECT_DIR$/.idea/modules/LevelDesign.project_test.iml" group="LevelDesign.project" />
     </modules>
   </component>
 </project>
