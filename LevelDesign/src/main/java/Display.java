@@ -55,7 +55,7 @@ public class Display
 
 		Level level;
 		level = new Level();
-		Json2LevelAdapter.Load(level,"image/level1.json");
+		Json2LevelAdapter.Load(level,"json/level1.json");
 
 		disp.setLayout(null);
 		MakeLevel makelevel;

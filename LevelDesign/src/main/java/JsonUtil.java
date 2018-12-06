@@ -58,16 +58,28 @@ public class JsonUtil {
     }
 
     public static String getstr(String json, String code){
-            return(get(json,code).toString());
+         Object target=get(json,code);
+         if(target!=null) {
+             return (target.toString());
+         }else{
+             return " ";
+         }
     }
 
     public static int getInt(String json, String code){
-            return(new Integer( getstr(json,code) ).intValue());
+        String target=getstr(json,code);
+        assert target!=null:"cannot read json";
+        if(target.matches("[0-9]*")) {
+            return (new Integer(target).intValue());
+        }else{
+            System.out.println("Error@getInt "+target + " @ "+code);
+            return 0;
+        }
     }
 
 
     public static void main(String[] args) {
-       String json = readFile("image/sample.json");
+       String json = readFile("json/sample.json");
         if (json!=null){
         {
             Object value = JsonUtil.get(json, "test");

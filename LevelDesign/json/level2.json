@@ -1,7 +1,7 @@
 {
   "attributes": {
-    "Name": "level1",
-    "gridsize":27,
+    "notName": "level1",
+    "gridsize":"a",
     "width":10,
     "height":15
   },

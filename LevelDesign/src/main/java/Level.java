@@ -33,9 +33,10 @@ public class Level{
 
     Level(){
         levelsize.gridsize=27;
-        levelsize.width=10;
-        levelsize.height=10;
-        ObjectMap=new int[0][0];
+        levelsize.width=1;
+        levelsize.height=1;
+        ObjectMap=new int[1][1];
+        ObjectMap[0][0]=0;
         objects= new ArrayList<MyObject>();
         Name="asdf";
         BackgroundName="asdf";
