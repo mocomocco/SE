@@ -18,8 +18,8 @@ public class Level{
         }
 
         MyObject(){
-            objectsize.anchorx = 25;
-            objectsize.anchory = 25;
+            objectsize.anchorx = 0;
+            objectsize.anchory = 0;
             Image="image/grasst.gif";
             Name="asdf";
         }

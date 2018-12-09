@@ -25,7 +25,7 @@ public class Item {
             items.add(label[i]);
             label[i].setBorder(BorderFactory.createLineBorder(Color.lightGray));
         }
-        items.setBorder(BorderFactory.createLineBorder(Color.lightGray));;
+        items.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 
     }
 }
