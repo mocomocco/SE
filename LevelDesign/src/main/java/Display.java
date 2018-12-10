@@ -9,7 +9,7 @@ public class Display extends JFrame implements MouseListener
 	JFrame jf;
 	MenuBar mb;
 	JPanel p1, p2; // top panel, bottom panel
-	JPanel pa, pb; // left panel, right panel in top panel
+	JPanel pa, pb; // left panel, right panel on top panel
 	JPanel prop, layerp, disp, itp; //property panel, layer panel, display panel, item panel
 	static int pointx = 1;
 	static int pointy = 1;
