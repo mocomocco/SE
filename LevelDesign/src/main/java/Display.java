@@ -13,6 +13,7 @@ public class Display extends JFrame implements MouseListener
 	JPanel prop, layerp, disp, itp; //property panel, layer panel, display panel, item panel
 	static int pointx = 1;
 	static int pointy = 1;
+	String targetjson="./json/level1.json";
 
 
 	public Display(String msg)
@@ -59,7 +60,7 @@ public class Display extends JFrame implements MouseListener
 
 		Level level;
 		level = new Level();
-		Json2LevelAdapter.Load(level,"../../../json/level1.json");
+		Json2LevelAdapter.Load(level,targetjson);
 
 		disp.setLayout(null);
 		MakeLevel makelevel;
@@ -93,11 +94,12 @@ public class Display extends JFrame implements MouseListener
 		Point point = e.getPoint();
 		Level level;
 		level = new Level();
-		Json2LevelAdapter.Load(level,"../../../json/level1.json");
+		Json2LevelAdapter.Load(level,targetjson);
 		pointx = point.x;
 		pointy = point.y;
 		Display display;
 		display = new Display("Level Design");
+
 	}
 
 	public void mouseEntered(MouseEvent e){}

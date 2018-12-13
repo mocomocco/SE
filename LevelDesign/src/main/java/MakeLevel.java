@@ -41,9 +41,10 @@ public class MakeLevel {
         int objectlength=level.objects.size();
         int instanceslength=level.ObjectMap.length;
         imageIcons=new ImageIcon[objectlength];
-
+        String imagename;
         for (int objectid=1;objectid<objectlength+1;objectid++) {
             //System.out.println(objectid-1+" "+level.objects.get(objectid-1).Image);
+
             imageIcons[objectid-1] = new ImageIcon(level.objects.get(objectid-1).Image); // load the image to a imageIcon
 
             Image image = imageIcons[objectid-1].getImage(); // transform it

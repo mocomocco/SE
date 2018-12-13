@@ -7,14 +7,14 @@
   },
   "background": {
     "Name":"Default",
-    "Image": "background.png"
+    "Image": "./image/background.png"
   },
   "objects": {
     "length": 2,
     "object1": {
       "attributes": {
         "Name": "tree",
-        "Image": "tree3_1.gif",
+        "Image": "./image/tree3_1.gif",
         "anchorx": 25,
         "anchory": 25
       },
@@ -33,7 +33,7 @@
     "object2": {
       "attributes": {
         "Name": "grass",
-        "Image": "grasst.gif",
+        "Image": "./image/grasst.gif",
         "anchorx": 25,
         "anchory": 25
       },

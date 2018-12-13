@@ -14,20 +14,15 @@ public class Json2LevelAdapter{
                 level.levelsize.height = JsonUtil.getInt(json, "attributes.height");
                 level.ObjectMap = new int[level.levelsize.height][level.levelsize.width];
                 level.BackgroundName = JsonUtil.getstr(json, "background.Name");
-                level.BackgroundImage = "../../../image/" + JsonUtil.getstr(json, "background.Image");
+                level.BackgroundImage = JsonUtil.getstr(json, "background.Image");
                 objectnum = JsonUtil.getInt(json, "objects.length");
 
 
                 for (int object = 1; object < objectnum + 1; object++) {
-                    Level.MyObject newobj = new Level.MyObject();
                     attributescode = "objects.object" + String.valueOf(object) + ".attributes.";
-                    newobj.Name = JsonUtil.getstr(json, attributescode + "Name");
-                    newobj.Image = "../../../image/" + JsonUtil.getstr(json, attributescode + "Image");
-                    newobj.objectsize.anchorx = JsonUtil.getInt(json, attributescode + "anchorx");
-                    newobj.objectsize.anchory = JsonUtil.getInt(json, attributescode + "anchory");
 
                     String name = JsonUtil.getstr(json, attributescode + "Name");
-                    String image = "../../../image/" + JsonUtil.getstr(json, attributescode + "Image");
+                    String image =  JsonUtil.getstr(json, attributescode + "Image");
                     int anchorx = JsonUtil.getInt(json, attributescode + "anchorx");
                     int anchory = JsonUtil.getInt(json, attributescode + "anchory");
 
@@ -50,7 +45,7 @@ public class Json2LevelAdapter{
         Level samplelevel;
         samplelevel=new Level();
         System.out.println(samplelevel.Name);
-        Load(samplelevel,"../../../json/level2.json");
+        Load(samplelevel,"/json/level2.json");
         for(int x=0;x<samplelevel.levelsize.height;x++) {
             for (int y=0;y<samplelevel.levelsize.width;y++) {
                 System.out.print(samplelevel.ObjectMap[x][y]);
