@@ -16,8 +16,17 @@ public class Display extends JFrame implements MouseListener
 	String targetjson="./json/level1.json";
 
 
-	public Display(String msg)
+	public Display(String msg){
+		this(msg,null);
+	}
+
+	public Display(String msg, String target)
 	{
+		if (target != null)
+		{
+			targetjson = target;
+		}
+		
 		jf = new JFrame(msg);
 
 		jf.setVisible(true);
