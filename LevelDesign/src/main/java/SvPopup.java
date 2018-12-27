@@ -51,8 +51,14 @@ public class SvPopup extends JDialog {
 			namet = nameText.getText();
 			System.out.println(namet);
 			save.setVisible(false);
-			Level2JsonAdapter.WriteJson(level,namet);//<-json
-			//new SvFileDialogs(namet,thislevel);
+			String extName = list.getSelectedItem().toString();
+			if (extName == "json") {
+				Level2JsonAdapter.WriteJson(level,namet);//<-json
+				//new SvFileDialogs(namet,thislevel);
+			}
+			else if(extName =="exe") {
+				//some codes
+			}
 		});
 		
 		cancel.addActionListener(e -> {
