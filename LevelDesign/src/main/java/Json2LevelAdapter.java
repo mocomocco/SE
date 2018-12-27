@@ -1,3 +1,4 @@
+import java.nio.file.FileSystems;
 import java.util.List;
 
 public class Json2LevelAdapter{
@@ -15,6 +16,7 @@ public class Json2LevelAdapter{
                 level.ObjectMap = new int[level.levelsize.height][level.levelsize.width];
                 level.BackgroundName = JsonUtil.getstr(json, "background.Name");
                 level.BackgroundImage = JsonUtil.getstr(json, "background.Image");
+                String spa = FileSystems.getDefault().getSeparator();
                 objectnum = JsonUtil.getInt(json, "objects.length");
 
 
@@ -41,20 +43,4 @@ public class Json2LevelAdapter{
         }
     }
 
-    public static void main(String[] args) {
-        Level samplelevel;
-        samplelevel=new Level();
-        System.out.println(samplelevel.Name);
-        Load(samplelevel,"/json/level2.json");
-        for(int x=0;x<samplelevel.levelsize.height;x++) {
-            for (int y=0;y<samplelevel.levelsize.width;y++) {
-                System.out.print(samplelevel.ObjectMap[x][y]);
-            }
-            System.out.println(" ");
-        }
-        for(int i=0;i<samplelevel.objects.size();i++) {
-            System.out.println(samplelevel.objects.get(i).Image);
-        }
-        System.out.println("Name : "+samplelevel.Name);
-    }
 }
