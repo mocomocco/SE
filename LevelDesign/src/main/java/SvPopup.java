@@ -9,8 +9,9 @@ public class SvPopup extends JDialog {
 	JComboBox<String> list;
 	JButton ok, cancel;
 	String namet;
+	Level thislevel;
 
-	public SvPopup()
+	public SvPopup(Level level)
 	{
 		String extension[] = {"json", "exe"};
 		save = new JDialog(this, "Save", true);
@@ -48,8 +49,10 @@ public class SvPopup extends JDialog {
 
 		ok.addActionListener(e -> {
 			namet = nameText.getText();
+			System.out.println(namet);
 			save.setVisible(false);
-			new SvFileDialogs(namet);
+			Level2JsonAdapter.WriteJson(level,namet);//<-json
+			//new SvFileDialogs(namet,thislevel);
 		});
 		
 		cancel.addActionListener(e -> {

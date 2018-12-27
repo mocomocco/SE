@@ -8,10 +8,10 @@ class SvFileDialogs extends JFrame
 {
 	JFileChooser fc;
 	String fileName;
-	
-	public SvFileDialogs(String namet)
+	Level thislevel;
+	public SvFileDialogs(String namet,Level level)
 	{
-		
+		thislevel=level;
 		try {
 		UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		} catch (Exception e) {} // setting Look And Feel

@@ -7,9 +7,11 @@ public class Menus extends MenuBar implements ActionListener
 {
 	MenuItem fileNew, fileOpen, fileExit, fileSave, fileSaveAs, fileOpenImg, fileHelp;
 	JDialog jn, js;
+	Level thislevel;
 
-	public Menus()
+	public Menus(Level level)
 	{
+		thislevel=level;
 		Menu file = new Menu("File");
 		fileNew = new MenuItem("New");
 		fileNew.addActionListener(this);
@@ -45,7 +47,7 @@ public class Menus extends MenuBar implements ActionListener
 		} else if(e.getSource() == fileOpenImg) {
 			//some codes
 		} else if(e.getSource() == fileSave) {
-			js = new SvPopup();
+			js = new SvPopup(thislevel);
 		} 
 	}
 

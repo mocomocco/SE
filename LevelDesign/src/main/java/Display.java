@@ -26,14 +26,18 @@ public class Display extends JFrame implements MouseListener
 		{
 			targetjson = target;
 		}
-		
+
+		Level level;
+		level = new Level();
+		Json2LevelAdapter.Load(level,targetjson);
+
 		jf = new JFrame(msg);
 
 		jf.setVisible(true);
 		jf.setSize(800,500);
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		mb = new Menus();
+		mb = new Menus(level);
 		jf.setMenuBar(mb);
 
 		jf.setLayout(new BorderLayout());
@@ -66,10 +70,6 @@ public class Display extends JFrame implements MouseListener
 
 		jf.add(p1, BorderLayout.CENTER);
 		jf.add(itp, BorderLayout.SOUTH);
-
-		Level level;
-		level = new Level();
-		Json2LevelAdapter.Load(level,targetjson);
 
 		disp.setLayout(null);
 		MakeLevel makelevel;
