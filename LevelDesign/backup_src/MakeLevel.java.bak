@@ -6,18 +6,9 @@ public class MakeLevel {
     static ImageIcon[] imageIcons;
     static JLabel[] label;
 
-    public MakeLevel(Level level, PopupDialog pop, int pointx, int pointy) {
-		int x, y;
-
-		if (pop.wid != 0 && pop.hei != 0){
-			x = pop.wid;
-			y = pop.hei;
-		} else{
-			x = level.levelsize.width;
-			y = level.levelsize.height;
-		}
-
-
+    public MakeLevel(Level level, int pointx, int pointy) {
+        int x = level.levelsize.width;
+        int y = level.levelsize.height;
         map = new JPanel();
         map.setBounds(0, 0, level.levelsize.gridsize*x, level.levelsize.gridsize*y);
         map.setLayout(new GridLayout(y,x));

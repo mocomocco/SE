@@ -43,7 +43,8 @@ public class Menus extends MenuBar implements ActionListener
 		} else if(e.getSource() == fileOpen){
 			new OpFileDialogs();
 		} else if(e.getSource() == fileNew){
-			jn = new PopupDialog();
+			int count = 1;
+			jn = new PopupDialog(count);
 		} else if(e.getSource() == fileOpenImg) {
 			//some codes
 		} else if(e.getSource() == fileSave) {
