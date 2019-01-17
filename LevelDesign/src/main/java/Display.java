@@ -21,7 +21,7 @@ public class Display extends JFrame implements MouseListener
 		this(msg,null);
 	}
 
-	private void setDisplay(Level level){
+	private void setDisplay(String msg,Level level){
 		jf = new JFrame(msg);
 
 		jf.setVisible(true);
@@ -104,12 +104,12 @@ public class Display extends JFrame implements MouseListener
 		Level level;
 		level = new Level();
 		Json2LevelAdapter.Load(level,targetjson);
-		setDisplay(level);
+		setDisplay(msg,level);
 	}
 
-	public Display(Level level)
+	public Display(String msg,Level level,int i)
 	{
-		setDisplay(level);
+		setDisplay(msg,level);
 	}
 
 	public void mouseClicked(MouseEvent e){

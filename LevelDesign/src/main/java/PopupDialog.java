@@ -55,7 +55,8 @@ public class PopupDialog extends JDialog
 			//String sizeName = list.getSelectedItem().toString();
 			
 			System.out.println("name: " + name+ "size: " + wid + "x" + hei + "\n" + "count" + count);
-
+			Level newlevel= new Level(name,wid,hei);
+			Display d = new Display("Level Design", newlevel,1);
 			alert.setVisible(false);
 		});
 		
