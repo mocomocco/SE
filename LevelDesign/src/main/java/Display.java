@@ -21,17 +21,7 @@ public class Display extends JFrame implements MouseListener
 		this(msg,null);
 	}
 
-	public Display(String msg, String target)
-	{
-		if (target != null)
-		{
-			targetjson = target;
-		}
-
-		Level level;
-		level = new Level();
-		Json2LevelAdapter.Load(level,targetjson);
-
+	private void setDisplay(Level level){
 		jf = new JFrame(msg);
 
 		jf.setVisible(true);
@@ -45,7 +35,7 @@ public class Display extends JFrame implements MouseListener
 
 		p1 = new JPanel();	p2 = new JPanel();
 		pa = new JPanel();	pb = new JPanel();
-		
+
 		p1.setLayout(new BorderLayout());
 		pa.setLayout(new GridLayout(2,1));
 
@@ -71,7 +61,7 @@ public class Display extends JFrame implements MouseListener
 
 		jf.add(p1, BorderLayout.CENTER);
 		jf.add(itp, BorderLayout.SOUTH);
-		
+
 		PopupDialog pop;
 		pop = new PopupDialog(count);
 
@@ -81,26 +71,45 @@ public class Display extends JFrame implements MouseListener
 		disp.add(makelevel.map);
 		disp.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 
-        itp.setLayout(null);
-        Item item;
-        item = new Item(level,makelevel.imageIcons);
-        itp.add(item.items);
-        itp.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		itp.setLayout(null);
+		Item item;
+		item = new Item(level,makelevel.imageIcons);
+		itp.add(item.items);
+		itp.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 
-        prop.setLayout(null);
-        Property property;
-        property = new Property(level);
-        prop.add(property.pro);
-        prop.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		prop.setLayout(null);
+		Property property;
+		property = new Property(level);
+		prop.add(property.pro);
+		prop.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 
-        layerp.setLayout(null);
-        Layer layer;
-        layer = new Layer(level, makelevel.imageIcons, pointx, pointy);
-        layerp.add(layer.layers);
-        layerp.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		layerp.setLayout(null);
+		Layer layer;
+		layer = new Layer(level, makelevel.imageIcons, pointx, pointy);
+		layerp.add(layer.layers);
+		layerp.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 
 		disp.addMouseListener(this);
 
+
+	}
+
+	public Display(String msg, String target)
+	{
+		if (target != null)
+		{
+			targetjson = target;
+		}
+
+		Level level;
+		level = new Level();
+		Json2LevelAdapter.Load(level,targetjson);
+		setDisplay(level);
+	}
+
+	public Display(Level level)
+	{
+		setDisplay(level);
 	}
 
 	public void mouseClicked(MouseEvent e){

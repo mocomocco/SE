@@ -53,9 +53,12 @@
       <file leaf-file-name="Display.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/Display.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-21">
-              <caret line="39" column="0" lean-forward="true" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="235">
+              <caret line="111" column="24" lean-forward="true" selection-start-line="111" selection-start-column="24" selection-end-line="111" selection-end-column="24" />
+              <folding>
+                <element signature="e#2612#2613#0" expanded="true" />
+                <element signature="e#2636#2637#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -353,7 +356,6 @@
         <option value="$PROJECT_DIR$/src/main/java/Level2JsonAdapter.java" />
         <option value="$PROJECT_DIR$/src/test/java/Level2JsonAdapterTest.java" />
         <option value="$PROJECT_DIR$/json/level2.json" />
-        <option value="$PROJECT_DIR$/src/main/java/Display.java" />
         <option value="$PROJECT_DIR$/src/main/java/Menus.java" />
         <option value="$PROJECT_DIR$/src/main/java/SvFileDialogs.java" />
         <option value="$PROJECT_DIR$/src/main/java/SvPopup.java" />
@@ -361,6 +363,7 @@
         <option value="$PROJECT_DIR$/src/test/java/MyObjectTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/PopupDialog.java" />
         <option value="$PROJECT_DIR$/src/main/java/Level.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Display.java" />
       </list>
     </option>
   </component>
@@ -1083,7 +1086,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="885">
           <caret line="61" column="18" lean-forward="false" selection-start-line="61" selection-start-column="18" selection-end-line="61" selection-end-column="18" />
-          <folding />
+          <folding>
+            <element signature="e#2612#2613#0" expanded="true" />
+            <element signature="e#2636#2637#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1329,9 +1335,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Display.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-21">
-          <caret line="39" column="0" lean-forward="true" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="235">
+          <caret line="111" column="24" lean-forward="true" selection-start-line="111" selection-start-column="24" selection-end-line="111" selection-end-column="24" />
+          <folding>
+            <element signature="e#2612#2613#0" expanded="true" />
+            <element signature="e#2636#2637#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
