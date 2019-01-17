@@ -55,6 +55,7 @@ public class PopupDialog extends JDialog
 			//String sizeName = list.getSelectedItem().toString();
 			
 			System.out.println("name: " + name+ "size: " + wid + "x" + hei + "\n" + "count" + count);
+
 			alert.setVisible(false);
 		});
 		

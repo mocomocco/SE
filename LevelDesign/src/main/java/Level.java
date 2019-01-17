@@ -31,6 +31,17 @@ public class Level{
     static List<MyObject> objects;
     static int[][] ObjectMap;
 
+    Level(String name,int x ,int y){
+        levelsize.gridsize=27;
+        levelsize.width=x;
+        levelsize.height=y;
+        ObjectMap=new int[y][x];
+        objects= new ArrayList<MyObject>();
+        Name=name;
+        BackgroundName="asdf";
+        BackgroundImage="image/background.png";
+    }
+
     Level(){
         levelsize.gridsize=27;
         levelsize.width=1;
