@@ -4,12 +4,15 @@ import java.awt.*;
 public class Property {
     static JPanel pro;
 
+    private void SizeChange(ImageIcon icon){
+        icon=new ImageIcon(icon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH));
+    }
+
     public Property(Level level) {
         //change object size
 
-        ImageIcon imageIcon = new ImageIcon(level.BackgroundImage);
-        Image newimg = imageIcon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH); // scale it the smooth way
-        ImageIcon ForDisplay=new ImageIcon(newimg);
+        ImageIcon ForDisplay = new ImageIcon(level.BackgroundImage);
+        SizeChange(ForDisplay);
 
         pro = new JPanel();
         pro.setBounds(0, 0, 50, 50);
