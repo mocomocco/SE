@@ -18,6 +18,8 @@ public class Display extends JFrame implements MouseListener
 	Layer layer;
 	static int pointx = 1;
 	static int pointy = 1;
+	static int itp_pointx = 1;
+	static int itp_pointy = 1;
 	static int count = 0;
 
 	String targetjson="./json/level1.json";
@@ -89,11 +91,12 @@ public class Display extends JFrame implements MouseListener
 		item = new Item(thislevel,makelevel.imageIcons);
 		itp.add(item.items);
 		itp.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		itp.addMouseListener(this);
 	}
 
 	private void setlayerp(){
 		layerp.setLayout(null);
-		layer = new Layer(thislevel, makelevel.imageIcons, pointx, pointy);
+		layer = new Layer(thislevel, makelevel.imageIcons, pointx, pointy,itp_pointx, itp_pointy);
 		layerp.add(layer.layers);
 		layerp.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 	}
@@ -146,18 +149,28 @@ public class Display extends JFrame implements MouseListener
 	public void mouseClicked(MouseEvent e){
 		ImageIcon ForLayer;
 		Point point = e.getPoint();
-		pointx = point.x;
-		pointy = point.y;
-		int i;
-		layer.GetPointaddress(pointx,pointy);
-        int id=thislevel.ObjectMap[layer.point_rownum-1][layer.point_columnnum-1];
-        if(id!=0){
-            ForLayer = makelevel.imageIcons.get(id-1);
-        }else{
-            ForLayer=new ImageIcon(thislevel.BackgroundImage);
-        }
-        layer.change(ForLayer);
-		makelevel.setRedBorder(layer.point_address);
+		if (e.getSource() == disp) {
+			pointx = point.x;
+			pointy = point.y;
+			int i;
+			layer.GetPointaddress(pointx,pointy);
+			int id=thislevel.ObjectMap[layer.point_rownum-1][layer.point_columnnum-1];
+			if(id!=0){
+				ForLayer = makelevel.imageIcons.get(id-1);
+			}else{
+				ForLayer=new ImageIcon(thislevel.BackgroundImage);
+			}
+			layer.change(ForLayer);
+			makelevel.setRedBorder(layer.point_address);
+		}else if (e.getSource() == itp) {
+			itp_pointx = point.x;
+			itp_pointy = point.y;
+			makelevel.changeIcon(itp_pointx,itp_pointy);
+			ForLayer = makelevel.imageIcons.get(makelevel.itp_point_address);
+			layer.change(ForLayer);
+			thislevel.ObjectMap[layer.point_rownum-1][layer.point_columnnum-1] = makelevel.itp_point_address + 1;
+		}
+
 	}
 
 	public void mouseEntered(MouseEvent e){}

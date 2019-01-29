@@ -30,7 +30,7 @@ public class Layer {
         newlabel.setIcon(ForDisplay);
     }
 
-    public Layer(Level level, List<ImageIcon> imageIcons, int pointx, int pointy) {
+    public Layer(Level level, List<ImageIcon> imageIcons, int pointx, int pointy, int itp_pointx, int itp_pointy) {
         targetlevel=level;
 
         ImageIcon ForDisplay = new ImageIcon(level.BackgroundImage);

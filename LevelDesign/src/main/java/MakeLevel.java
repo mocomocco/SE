@@ -9,7 +9,7 @@ public class MakeLevel {
     static JPanel map;
     static List<ImageIcon> imageIcons;
     static JLabel[] label;
-    int x, y,point_columnnum, point_rownum,point_address;
+    int x, y,point_columnnum, point_rownum,point_address,itp_point_columnnum,itp_point_rownum,itp_point_address;
     Level targetlevel;
     LineBorder red=new LineBorder(Color.RED, 2, true);
     LineBorder gray=new LineBorder(Color.LIGHT_GRAY,1, true);
@@ -40,6 +40,13 @@ public class MakeLevel {
         return ((point_rownum-1)*x+(point_columnnum-1));
     }
 
+    public void GetItemPointaddress(int itp_newpointx,int itp_newpointy){
+        int x = targetlevel.objects.size();
+        itp_point_columnnum = itp_newpointx / 50 + 1;
+        itp_point_rownum = itp_newpointy / 50 + 1;
+        itp_point_address = (itp_point_rownum - 1) * x + (itp_point_columnnum - 1);
+    }
+
     private void setxy(PopupDialog pop){
 
         if (pop.wid != 0 && pop.hei != 0){
@@ -66,9 +73,16 @@ public class MakeLevel {
         SizeChange(imageIcons.get(address),(address));
     }
 
+    /*
     public void changeIcon(int newpointx,int newpointy,int iconid){
         GetPointaddress(newpointx,newpointy);
         label[point_address].setIcon(imageIcons.get(iconid-1));
+    }
+    */
+
+    public void changeIcon(int newpointx,int newpointy){
+        GetItemPointaddress(newpointx,newpointy);
+        label[point_address].setIcon(imageIcons.get(itp_point_address));
     }
 
     public MakeLevel(Level level, PopupDialog pop, int pointx, int pointy) {

@@ -2,10 +2,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.*;
 import java.util.List;
+import javax.swing.border.LineBorder;
 
 public class Item {
+    int point_address;
     static JPanel items;
     public static List<JLabel> labels=new ArrayList<JLabel>();
+    LineBorder gray=new LineBorder(Color.LIGHT_GRAY,1, true);
 
     private ImageIcon SizeChange(ImageIcon icon){
         return new ImageIcon(icon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH));
@@ -15,9 +18,9 @@ public class Item {
         icon=SizeChange(icon);
         JLabel newlabel=new JLabel(icon);
         labels.add(newlabel);
-        newlabel.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+        newlabel.setBorder(gray);
         items.add(newlabel);
-        items.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+        items.setBorder(gray);
     }
 
     public Item(Level level,List<ImageIcon> imageIcons) {
@@ -38,7 +41,7 @@ public class Item {
             //labels.add(new JLabel(ForDisplay[i]));
             addItem(ForDisplay[i]);
         }
-        items.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+        items.setBorder(gray);
 
     }
 }
