@@ -1,40 +1,54 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
 
 public class Layer {
     static JPanel layers;
+    int point_columnnum,point_rownum,point_address;
+    Level targetlevel;
+    ImageIcon ForDisplay;
+    JLabel newlabel;
 
-    public Layer(Level level, ImageIcon[] imageIcons, int pointx, int pointy) {
-
-        int columnnum = pointx / level.levelsize.gridsize + 1;
-        int rownum = pointy / level.levelsize.gridsize + 1;
-
+    public void GetPointaddress(int newpointx,int newpointy){
+        point_columnnum=newpointx / targetlevel.levelsize.gridsize + 1;
+        point_rownum=newpointy / targetlevel.levelsize.gridsize + 1;
         //click outside levelsize
-        if (columnnum > level.levelsize.width || rownum > level.levelsize.height) {
-            columnnum = 1;
-            rownum = 1;
+        if (point_columnnum > targetlevel.levelsize.width || point_rownum > targetlevel.levelsize.height) {
+            point_columnnum = 1;
+            point_rownum = 1;
         }
+    }
 
-        ImageIcon icon1 = new ImageIcon(level.BackgroundImage);
+    private void SizeChange(ImageIcon icon){
+        icon=new ImageIcon(icon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH));
+    }
 
-        int id=level.ObjectMap[rownum-1][columnnum-1];
+    public void change(ImageIcon ForDisplay){
+        //change object size
+        SizeChange(ForDisplay);
+        newlabel.setIcon(ForDisplay);
+    }
+
+    public Layer(Level level, List<ImageIcon> imageIcons, int pointx, int pointy) {
+        targetlevel=level;
+
+        ImageIcon ForDisplay = new ImageIcon(level.BackgroundImage);
+
+        GetPointaddress(pointx,pointy);
+
+        int id=level.ObjectMap[point_rownum-1][point_columnnum-1];
         if(id!=0){
-            icon1 = imageIcons[id-1];
-            //System.out.println(id);
-            //System.out.println(imageIcons[id-1]);
+            ForDisplay = imageIcons.get(id-1);
         }
-
 
         //change object size
-        //ImageIcon icon1 = imageIcons[id-1];
-        Image newimg = icon1.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH); // scale it the smooth way
-        ImageIcon ForDisplay=new ImageIcon(newimg);
+        SizeChange(ForDisplay);
 
         layers = new JPanel();
         layers.setBounds(0, 0, 50, 50);
         layers.setLayout(new GridLayout(1,1));
 
-        JLabel newlabel = new JLabel(ForDisplay);
+        newlabel = new JLabel(ForDisplay);
         layers.add(newlabel);
         newlabel.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 

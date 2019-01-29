@@ -78,36 +78,6 @@ public class Level2JsonAdapter {
         } catch(IOException e) {
             System.out.println(e);
         }
-/*
-
-                level.ObjectMap = new int[level.levelsize.height][level.levelsize.width];
-                objectnum = JsonUtil.getInt(json, "objects.length");
-
-
-                for (int object = 1; object < objectnum + 1; object++) {
-                    Level.MyObject newobj = new Level.MyObject();
-                    attributescode = "objects.object" + String.valueOf(object) + ".attributes.";
-                    newobj.Name = JsonUtil.getstr(json, attributescode + "Name");
-                    newobj.Image = "image/" + JsonUtil.getstr(json, attributescode + "Image");
-                    newobj.objectsize.anchorx = JsonUtil.getInt(json, attributescode + "anchorx");
-                    newobj.objectsize.anchory = JsonUtil.getInt(json, attributescode + "anchory");
-
-                    String name = JsonUtil.getstr(json, attributescode + "Name");
-                    String image = "image/" + JsonUtil.getstr(json, attributescode + "Image");
-                    int anchorx = JsonUtil.getInt(json, attributescode + "anchorx");
-                    int anchory = JsonUtil.getInt(json, attributescode + "anchory");
-
-                    level.objects.add(new Level.MyObject(anchorx, anchory, image, name));
-                    instancescode = "objects.object" + String.valueOf(object) + ".instances.";
-                    instancesnum = JsonUtil.getInt(json, instancescode + "length");
-                    for (int instance = 1; instance < instancesnum + 1; instance++) {
-                        //System.out.println(instancescode+ "  "+object);
-                        x = JsonUtil.getInt(json, instancescode + "instance" + String.valueOf(instance) + ".x");
-                        y = JsonUtil.getInt(json, instancescode + "instance" + String.valueOf(instance) + ".y");
-                        level.ObjectMap[y - 1][x - 1] = object;
-                    }
-            }*/
-
     }
 
 }

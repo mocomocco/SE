@@ -1,84 +1,101 @@
 import java.awt.*;
 import javax.swing.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MakeLevel {
     static JPanel map;
-    static ImageIcon[] imageIcons;
+    static List<ImageIcon> imageIcons;
     static JLabel[] label;
+    int x, y,point_columnnum, point_rownum,point_address;
+    Level targetlevel;
 
-    public MakeLevel(Level level, PopupDialog pop, int pointx, int pointy) {
-		int x, y;
-
-		if (pop.wid != 0 && pop.hei != 0){
-			x = pop.wid;
-			y = pop.hei;
-		} else{
-			x = level.levelsize.width;
-			y = level.levelsize.height;
-		}
-
-
+    private void initmap(Level level){
         map = new JPanel();
         map.setBounds(0, 0, level.levelsize.gridsize*x, level.levelsize.gridsize*y);
         map.setLayout(new GridLayout(y,x));
-        ImageIcon icon1 = new ImageIcon(level.BackgroundImage);
-        label = new JLabel[x*y];
+    }
 
+    private void MakeFoundation(ImageIcon icon1){
         //make background --レベルの背景を作成
         for (int i = 0; i < x*y; i++) {
             label[i] = new JLabel(icon1);
             map.add(label[i]);
             label[i].setBorder(BorderFactory.createLineBorder(Color.lightGray));
         }
+    }
 
-
-
-
-        int point_columnnum = pointx / level.levelsize.gridsize + 1;
-        int point_rownum = pointy / level.levelsize.gridsize + 1;
-
+    public int GetPointaddress(int newpointx,int newpointy){
+        point_columnnum=newpointx / targetlevel.levelsize.gridsize + 1;
+        point_rownum=newpointy / targetlevel.levelsize.gridsize + 1;
         //click outside levelsize
-        if (point_columnnum > level.levelsize.width || point_rownum > level.levelsize.height) {
+        if (point_columnnum > targetlevel.levelsize.width || point_rownum > targetlevel.levelsize.height) {
             point_columnnum = 1;
             point_rownum = 1;
         }
+        return ((point_rownum-1)*x+(point_columnnum-1));
+    }
+
+    private void setxy(PopupDialog pop){
+
+        if (pop.wid != 0 && pop.hei != 0){
+            x = pop.wid;
+            y = pop.hei;
+        } else{
+            x = targetlevel.levelsize.width;
+            y = targetlevel.levelsize.height;
+        }
+    }
+
+    public void setRedBorder(int address){
+        label[address].setBorder(BorderFactory.createLineBorder(Color.red));
+    }
+
+    private void SizeChange(ImageIcon icon,int address){
+        icon=new ImageIcon(icon.getImage().getScaledInstance(targetlevel.objects.get(address).objectsize.anchorx,  targetlevel.objects.get(address).objectsize.anchory, java.awt.Image.SCALE_SMOOTH));
+    }
+
+    private void setIcon(int address,ImageIcon icon){
+        imageIcons.add(icon); // load the image to a imageIcon
+        SizeChange(imageIcons.get(address),(address));
+    }
+
+    public void changeIcon(int newpointx,int newpointy,int iconid){
+        GetPointaddress(newpointx,newpointy);
+        label[point_address].setIcon(imageIcons.get(iconid-1));
+    }
+
+    public MakeLevel(Level level, PopupDialog pop, int pointx, int pointy) {
+        targetlevel=level;
+        setxy(pop);
+        GetPointaddress(pointx,pointy);
+
+        initmap(level);
+
+        label = new JLabel[x*y];
+        ImageIcon icon1 = new ImageIcon(level.BackgroundImage);
+        MakeFoundation(icon1);
+
         //change border color
-        int point_address=(point_rownum-1)*x+(point_columnnum-1);
-        label[point_address].setBorder(BorderFactory.createLineBorder(Color.red));
+        setRedBorder(point_address);
 
         //change object size
-        int objectlength=level.objects.size();
-        int instanceslength=level.ObjectMap.length;
-        imageIcons=new ImageIcon[objectlength];
-        String imagename;
-        for (int objectid=1;objectid<objectlength+1;objectid++) {
-            //System.out.println(objectid-1+" "+level.objects.get(objectid-1).Image);
+        imageIcons=new ArrayList<ImageIcon>();
 
-            imageIcons[objectid-1] = new ImageIcon(level.objects.get(objectid-1).Image); // load the image to a imageIcon
-
-            Image image = imageIcons[objectid-1].getImage(); // transform it
-            Image newimg = image.getScaledInstance(level.objects.get(objectid-1).objectsize.anchorx, level.objects.get(objectid-1).objectsize.anchory, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
-            imageIcons[objectid-1] = new ImageIcon(newimg);  // transform it back
-
+        for (int objectid=1;objectid<level.objects.size()+1;objectid++) {
+            setIcon((objectid-1),new ImageIcon(level.objects.get(objectid-1).Image));
         }
 
         //add object
-        for(int instanceid=1;instanceid<instanceslength;instanceid++){
             for(int rownum=1;rownum<y+1;rownum++){
                 for(int columnnum=1;columnnum<x+1;columnnum++){
-                    //System.out.print(level.ObjectMap[rownum-1][columnnum-1]);
                     int id=level.ObjectMap[rownum-1][columnnum-1];
                     if(id!=0){
                         int address=(rownum-1)*x+(columnnum-1);
-                        //System.out.println("rownum"+rownum+"column"+columnnum+"address "+address);
-                        //System.out.println(id);
-                        label[address].setIcon(imageIcons[id-1]);
-                        //System.out.println(imageIcons[id-1]);
+                        label[address].setIcon(imageIcons.get(id-1));
                     }
                 }
-                //System.out.println(" ");
             }
-        }
 
     }
 }

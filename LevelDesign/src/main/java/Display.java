@@ -11,8 +11,11 @@ public class Display extends JFrame implements MouseListener
 	JPanel p1, p2; // top panel, bottom panel
 	JPanel pa, pb; // left panel, right panel on top panel
 	JPanel prop, layerp, disp, itp; //property panel, layer panel, display panel, item panel
+	Property property;
 	MakeLevel makelevel;
+	Item item;
 	PopupDialog pop;
+	Layer layer;
 	static int pointx = 1;
 	static int pointy = 1;
 	static int count = 0;
@@ -63,16 +66,36 @@ public class Display extends JFrame implements MouseListener
 		itp = new JPanel();
 		itp.setBorder(BorderFactory.createEtchedBorder());
 		itp.setPreferredSize(new Dimension(400,200));
-
-		pop = new PopupDialog(count);
 	}
 
-	private void setprops(Level level){
+	private void setprop(){
 		prop.setLayout(null);
-		Property property;
-		property = new Property(level);
+		property = new Property(thislevel);
 		prop.add(property.pro);
 		prop.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+	}
+
+	private void setdisp(){
+		pop = new PopupDialog(count);
+		disp.setLayout(null);
+		makelevel = new MakeLevel(thislevel, pop, pointx, pointy);
+		disp.add(makelevel.map);
+		disp.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		disp.addMouseListener(this);
+	}
+
+	private void setitp(){
+		itp.setLayout(null);
+		item = new Item(thislevel,makelevel.imageIcons);
+		itp.add(item.items);
+		itp.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+	}
+
+	private void setlayerp(){
+		layerp.setLayout(null);
+		layer = new Layer(thislevel, makelevel.imageIcons, pointx, pointy);
+		layerp.add(layer.layers);
+		layerp.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 	}
 
 	private void setDisplay(String msg,Level level){
@@ -87,33 +110,23 @@ public class Display extends JFrame implements MouseListener
 		initPanels();
 
 		setFoundation();
+		//ImageIcon test=new ImageIcon("./image/tree3_2.gif");
 
-		setprops(level);
+		setprop();//左上のやつ
+		//property.Change(test);
 
-		disp.setLayout(null);
-		makelevel = new MakeLevel(level, pop, pointx, pointy);
-		disp.add(makelevel.map);
-		disp.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		setdisp();//真ん中のやつ
+		//makelevel.changeIcon(15,15,1);
 
-		itp.setLayout(null);
-		Item item;
-		item = new Item(level,makelevel.imageIcons);
-		itp.add(item.items);
-		itp.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		setitp();
+		//item.addItem(test);
 
-		layerp.setLayout(null);
-		Layer layer;
-		layer = new Layer(level, makelevel.imageIcons, pointx, pointy);
-		layerp.add(layer.layers);
-		layerp.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-
-		disp.addMouseListener(this);
-
+		setlayerp();//左真ん中のやつ
+		//layer.change(test);
 
 	}
 
-	public Display(String msg, String target)
-	{
+	public Display(String msg, String target) {
 		if (target != null)
 		{
 			targetjson = target;
@@ -131,20 +144,20 @@ public class Display extends JFrame implements MouseListener
 	}
 
 	public void mouseClicked(MouseEvent e){
+		ImageIcon ForLayer;
 		Point point = e.getPoint();
-		Level level;
-		level = new Level();
-		Json2LevelAdapter.Load(level,targetjson);
 		pointx = point.x;
 		pointy = point.y;
-		jf.setVisible(false);
+		System.out.println(pointx+" "+pointy);
 		int i;
-		i=(int)((pointx / thislevel.levelsize.gridsize + 1)*4+(pointy / thislevel.levelsize.gridsize + 1));
-		//makelevel.label[i].setIcon();
-				//[(pointx / thislevel.levelsize.gridsize + 1)*4+(pointy / thislevel.levelsize.gridsize + 1)];
-		/*Display display;
-		setDisplay("Level Design",level);
-		display = new Display("Level Design");*/
+		layer.GetPointaddress(pointx,pointy);
+        int id=thislevel.ObjectMap[layer.point_rownum-1][layer.point_columnnum-1];
+        if(id!=0){
+            ForLayer = makelevel.imageIcons.get(id-1);
+        }else{
+            ForLayer=new ImageIcon(thislevel.BackgroundImage);
+        }
+        layer.change(ForLayer);
 	}
 
 	public void mouseEntered(MouseEvent e){}

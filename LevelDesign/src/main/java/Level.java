@@ -53,22 +53,4 @@ public class Level{
         BackgroundName="asdf";
         BackgroundImage="image/background.png";
     }
-
-    public static void main(String[] args) {
-        Level samplelevel;
-        samplelevel=new Level();
-        System.out.println(samplelevel.Name);
-        for(int i=0;i<samplelevel.objects.size();i++) {
-            System.out.println(samplelevel.objects.get(i).Image);
-        }
-        MyObject newobj=new MyObject();
-        newobj.Image="0だよー";
-        samplelevel.objects.add(0,newobj);
-        newobj=new MyObject();
-        newobj.Image="1だよー";
-        samplelevel.objects.add(1,newobj);
-        for(int i=0;i<samplelevel.objects.size();i++) {
-            System.out.println(samplelevel.objects.get(i).Image);
-        }
-    }
 }

@@ -78,18 +78,5 @@ public class JsonUtil {
     }
 
 
-    public static void main(String[] args) {
-       String json = readFile("../../../json/sample.json");
-        if (json!=null){
-        {
-            Object value = JsonUtil.get(json, "test");
-            System.out.println(value);
-        }
-        {
-            Object value = JsonUtil.get(json, "test2.test3");
-            System.out.println(value);
-        }
-
-    }}
 
 }

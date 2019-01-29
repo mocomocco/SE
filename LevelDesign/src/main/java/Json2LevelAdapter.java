@@ -32,7 +32,6 @@ public class Json2LevelAdapter{
                     instancescode = "objects.object" + String.valueOf(object) + ".instances.";
                     instancesnum = JsonUtil.getInt(json, instancescode + "length");
                     for (int instance = 1; instance < instancesnum + 1; instance++) {
-                        //System.out.println(instancescode+ "  "+object);
                         x = JsonUtil.getInt(json, instancescode + "instance" + String.valueOf(instance) + ".x");
                         y = JsonUtil.getInt(json, instancescode + "instance" + String.valueOf(instance) + ".y");
                         level.ObjectMap[y - 1][x - 1] = object;
