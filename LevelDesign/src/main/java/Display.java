@@ -148,7 +148,6 @@ public class Display extends JFrame implements MouseListener
 		Point point = e.getPoint();
 		pointx = point.x;
 		pointy = point.y;
-		System.out.println(pointx+" "+pointy);
 		int i;
 		layer.GetPointaddress(pointx,pointy);
         int id=thislevel.ObjectMap[layer.point_rownum-1][layer.point_columnnum-1];
@@ -158,6 +157,7 @@ public class Display extends JFrame implements MouseListener
             ForLayer=new ImageIcon(thislevel.BackgroundImage);
         }
         layer.change(ForLayer);
+		makelevel.setRedBorder(layer.point_address);
 	}
 
 	public void mouseEntered(MouseEvent e){}

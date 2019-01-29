@@ -17,6 +17,7 @@ public class Layer {
             point_columnnum = 1;
             point_rownum = 1;
         }
+        point_address=(point_rownum-1)*targetlevel.levelsize.width+(point_columnnum-1);
     }
 
     private void SizeChange(ImageIcon icon){

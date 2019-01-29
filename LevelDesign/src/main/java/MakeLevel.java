@@ -1,5 +1,7 @@
 import java.awt.*;
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +11,8 @@ public class MakeLevel {
     static JLabel[] label;
     int x, y,point_columnnum, point_rownum,point_address;
     Level targetlevel;
+    LineBorder red=new LineBorder(Color.RED, 2, true);
+    LineBorder gray=new LineBorder(Color.LIGHT_GRAY,1, true);
 
     private void initmap(Level level){
         map = new JPanel();
@@ -21,7 +25,7 @@ public class MakeLevel {
         for (int i = 0; i < x*y; i++) {
             label[i] = new JLabel(icon1);
             map.add(label[i]);
-            label[i].setBorder(BorderFactory.createLineBorder(Color.lightGray));
+            label[i].setBorder(gray);
         }
     }
 
@@ -48,7 +52,9 @@ public class MakeLevel {
     }
 
     public void setRedBorder(int address){
-        label[address].setBorder(BorderFactory.createLineBorder(Color.red));
+        label[point_address].setBorder(gray);
+        point_address=address;
+        label[address].setBorder(red);
     }
 
     private void SizeChange(ImageIcon icon,int address){
