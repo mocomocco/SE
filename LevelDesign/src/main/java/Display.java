@@ -165,12 +165,13 @@ public class Display extends JFrame implements MouseListener
 		}else if (e.getSource() == itp) {
 			itp_pointx = point.x;
 			itp_pointy = point.y;
-			makelevel.changeIcon(itp_pointx,itp_pointy);
-			ForLayer = makelevel.imageIcons.get(makelevel.itp_point_address);
-			layer.change(ForLayer);
-			thislevel.ObjectMap[layer.point_rownum-1][layer.point_columnnum-1] = makelevel.itp_point_address + 1;
+			if (itp_pointx <= 50 * thislevel.objects.size() && itp_pointy <= 50) {
+				makelevel.changeIcon(itp_pointx, itp_pointy);
+				ForLayer = makelevel.imageIcons.get(makelevel.itp_point_address);
+				layer.change(ForLayer);
+				thislevel.ObjectMap[layer.point_rownum - 1][layer.point_columnnum - 1] = makelevel.itp_point_address + 1;
+			}
 		}
-
 	}
 
 	public void mouseEntered(MouseEvent e){}
