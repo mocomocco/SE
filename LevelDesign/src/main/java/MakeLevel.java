@@ -47,12 +47,17 @@ public class MakeLevel {
         itp_point_address = (itp_point_rownum - 1) * x + (itp_point_columnnum - 1);
     }
 
-    private void setxy(PopupDialog pop){
+	public void setxy(PopupDialog pop){
 
         if (pop.wid != 0 && pop.hei != 0){
             x = pop.wid;
             y = pop.hei;
-        } else{
+			if (targetlevel.levelsize.width > x && targetlevel.levelsize.height > y)
+			{
+				JOptionPane.showMessageDialog(null, "It is not available");
+				System.exit(0);
+			}
+        } else {
             x = targetlevel.levelsize.width;
             y = targetlevel.levelsize.height;
         }
