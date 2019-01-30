@@ -43,7 +43,7 @@ public class Json2LevelAdapter{
                     int object=JsonUtil.getInt(json, instancescode + "instance" + String.valueOf(instance) + ".object");
                     x = JsonUtil.getInt(json, instancescode + "instance" + String.valueOf(instance) + ".x");
                     y = JsonUtil.getInt(json, instancescode + "instance" + String.valueOf(instance) + ".y");
-                    level.ObjectMap[y - 1][x - 1] = object;
+                    level.ObjectMap[y-1][x-1] = object;
                 }
             }
         }else{

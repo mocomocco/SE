@@ -53,7 +53,6 @@ public class Level2JsonAdapter {
                         filewriter.write("\"anchorx\":"+  level.objects.get(object).objectsize.anchorx+",");
                         filewriter.write("\"anchory\":"+  level.objects.get(object).objectsize.anchory);
                         filewriter.write("}");//attribute
-                        //if(object!=objectnum-1)filewriter.write(",");
                         filewriter.write("}");
                     }
 
@@ -65,8 +64,8 @@ public class Level2JsonAdapter {
                                 if (target != 0) {
                                     filewriter.write("\"instance" + (instancesize + 1) + "\":{");
                                     filewriter.write("\"object\":" + target + ",");
-                                    filewriter.write("\"x\":" + instancex + ",");
-                                    filewriter.write("\"y\":" + instancey);
+                                    filewriter.write("\"x\":" + (instancex+1) + ",");
+                                    filewriter.write("\"y\":" + (instancey+1));
                                     filewriter.write("},");//instance
                                     instancesize += 1;
                                 }
