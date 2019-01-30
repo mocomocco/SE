@@ -8,4 +8,12 @@ public class Instance {
         x=inputx;
         y=inputy;
     }
+    Instance(){
+        x=0;
+        y=0;
+    }
+    public void set(int inputx,int inputy){
+        x=inputx;
+        y=inputy;
+    }
 }

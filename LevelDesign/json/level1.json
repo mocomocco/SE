@@ -17,17 +17,6 @@
         "Image": "./image/tree3_1.gif",
         "anchorx": 25,
         "anchory": 25
-      },
-      "instances": {
-        "length":2,
-        "instance1": {
-          "x": 2,
-          "y": 3
-        },
-        "instance2": {
-          "x": 6,
-          "y": 1
-        }
       }
     },
     "object2": {
@@ -36,14 +25,25 @@
         "Image": "./image/grasst.gif",
         "anchorx": 25,
         "anchory": 25
-      },
-      "instances": {
-        "length":1,
-        "instance1": {
-          "x": 5,
-          "y": 5
-        }
       }
+    },
+    "instances": {
+      "instance1": {
+        "object":1,
+        "x": 2,
+        "y": 3
+      },
+      "instance2": {
+        "object":1,
+        "x": 6,
+        "y": 1
+      },
+      "instance3": {
+        "object":2,
+        "x": 5,
+        "y": 5
+      },
+      "length":3
     }
   }
 }

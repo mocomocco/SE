@@ -5,9 +5,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Level2JsonAdapter {
+
+    private static void addinstance(List<Instance> instances,Instance instance){
+        instances.add(instance);
+    }
     public static void WriteJson(Level level,String jsonname){
         int objectnum, instancesnum, x, y;
         String attributescode, instancescode;
+        List<List<Instance>> instances;
 
         try {
             File file = new File("json/"+jsonname+".json");
@@ -24,12 +29,12 @@ public class Level2JsonAdapter {
 
                 filewriter.write("\"background\":{");
                     filewriter.write("\"Name\":\""+level.BackgroundName+"\",");
-                    filewriter.write("\"image\":\""+ level.BackgroundImage+"\"");
+                    filewriter.write("\"Image\":\""+ level.BackgroundImage+"\"");
                 filewriter.write("}");
 
                 objectnum=level.objects.size();
                 filewriter.write(",");
-                List<List<Instance>> instances=new ArrayList<>();
+                instances=new ArrayList<List<Instance>>();
                 for(int object=0;object<objectnum;object++){
                     List<Instance> ainstance=new ArrayList();
                     instances.add(ainstance);
@@ -38,15 +43,7 @@ public class Level2JsonAdapter {
                 filewriter.write("\"length\":"+objectnum);
                 if(objectnum!=0){
                     filewriter.write(",");
-                    for(int instancey=0;instancey<level.levelsize.height;instancey++){
-                        for (int instancex=0;instancex<level.levelsize.width;instancex++){
-                            int target =level.ObjectMap[instancey][instancex];
-                            if(target!=0){
-                                instances.get(target-1).add(new Instance(instancex,instancey));
-                            }
-                        }
-                    }
-                    int instancesize;
+                    int instancesize=0;
                     for(int object=0;object<objectnum;object++) {
                         if(object!=0)filewriter.write(",");
                         filewriter.write("\"object"+(object+1)+"\":{");
@@ -55,21 +52,30 @@ public class Level2JsonAdapter {
                         filewriter.write("\"Image\":\""+  level.objects.get(object).Image+"\",");
                         filewriter.write("\"anchorx\":"+  level.objects.get(object).objectsize.anchorx+",");
                         filewriter.write("\"anchory\":"+  level.objects.get(object).objectsize.anchory);
-                        filewriter.write("},");//attribute
-
-                        instancesize=instances.get(object).size();
-                        filewriter.write("\"instances\":{");
-                        filewriter.write("\"length\":"+  instancesize+",");
-                        for (int instance=0;instance<instancesize;instance++){
-                            if(instance!=0)filewriter.write(",");
-                            filewriter.write("\"instance"+(instance+1)+"\":{");
-                            filewriter.write("\"x\":"+  instances.get(object).get(instance).x+",");
-                            filewriter.write("\"y\":"+instances.get(object).get(instance).y );
-                            filewriter.write("}");//instance
-                        }
-                        filewriter.write("}");//instances
+                        filewriter.write("}");//attribute
+                        //if(object!=objectnum-1)filewriter.write(",");
                         filewriter.write("}");
                     }
+
+                    filewriter.write(",\"instances\":{");
+
+                        for(int instancey=0;instancey<level.levelsize.height;instancey++) {
+                            for (int instancex = 0; instancex < level.levelsize.width; instancex++) {
+                                int target = level.ObjectMap[instancey][instancex];
+                                if (target != 0) {
+                                    filewriter.write("\"instance" + (instancesize + 1) + "\":{");
+                                    filewriter.write("\"object\":" + target + ",");
+                                    filewriter.write("\"x\":" + instancex + ",");
+                                    filewriter.write("\"y\":" + instancey);
+                                    filewriter.write("},");//instance
+                                    instancesize += 1;
+                                }
+                            }
+                        }
+                    filewriter.write("\"length\":"+  instancesize);
+
+
+                    filewriter.write("}");//instances
                 }
             filewriter.write("}");
             filewriter.write("}");
