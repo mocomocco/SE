@@ -29,13 +29,6 @@ public class Json2LevelAdapter{
                     int anchory = JsonUtil.getInt(json, attributescode + "anchory");
 
                     level.objects.add(new Level.MyObject(anchorx, anchory, image, name));
-                    /*instancescode = "objects.object" + String.valueOf(object) + ".instances.";
-                    instancesnum = JsonUtil.getInt(json, instancescode + "length");
-                    for (int instance = 1; instance < instancesnum + 1; instance++) {
-                        x = JsonUtil.getInt(json, instancescode + "instance" + String.valueOf(instance) + ".x");
-                        y = JsonUtil.getInt(json, instancescode + "instance" + String.valueOf(instance) + ".y");
-                        level.ObjectMap[y - 1][x - 1] = object;
-                    }*/
                 }
                 instancescode ="objects.instances.";
                 instancesnum = JsonUtil.getInt(json, instancescode+"length");

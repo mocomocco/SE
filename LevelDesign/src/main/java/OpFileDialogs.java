@@ -14,7 +14,7 @@ class OpFileDialogs extends JFrame
 		UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		} catch (Exception e) {} // setting Look And Feel
 		
-		fc = new JFileChooser();
+		fc = new JFileChooser("./json");
 		FileNameExtensionFilter filter = new FileNameExtensionFilter("JSON Files", "json");
 		fc.setFileFilter(filter);
 		fc.setMultiSelectionEnabled(false);
